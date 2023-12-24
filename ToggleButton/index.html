@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle button | CSS</title>
+    <style>
+        *{
+            margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+        }
+
+        #btn {
+            height: 50px;
+            width: 110px;
+            background: rgb(240, 237, 237);
+            box-shadow: 0 0 7px rgba(0,0,0,0.3) inset;
+            border-radius: 50px;
+            cursor: pointer;
+            position: relative;
+            transition: .3s;
+        }
+
+        #btn::before {
+            content:  '';
+            height: 43px;
+            border-radius: 50%;
+            width: 43px;
+            background: white;
+            box-shadow: 0 0 7px rgba(0,0,0,0.4);
+            position: absolute;
+           left: 3px;
+           top: 3.50px;
+           transition: .3s;
+        }
+
+        #checkbox:checked ~ #btn{
+            background: rgb(68, 66, 66);
+        }
+
+        #checkbox:checked + #btn::before{
+            left: 63.70px;
+            background: rgb(89, 85, 85);
+        }
+
+         
+
+#checkbox {
+    visibility: hidden;
+    position: absolute;
+}
+
+.changeBg{
+    background: black;
+}
+    </style>
+    
+</head>
+<body>
+   
+        <input type="checkbox" id="checkbox" >
+         <label for="checkbox" id="btn"></label>
+
+
+   <script>
+    let button = document.querySelector("#btn");
+    button.onclick = function() {
+         document.body.classList.toggle("changeBg")
+    }
+   </script>
+</body>
+</html>

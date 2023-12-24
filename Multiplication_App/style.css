@@ -1,0 +1,88 @@
+* {
+     padding: 0;
+     margin: 0;
+     box-sizing: border-box;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html,
+body {
+     height: 100%;
+     width: 100%;
+     background: linear-gradient(to right, blue, deeppink);
+}
+
+#main {
+     width: 100%;
+     display: flex;
+     justify-content: center;
+}
+
+.container {
+     width: 380px;
+     background: white;
+     box-shadow: rgba(0, 0, 0, 0.1);
+     border-radius: 5px;
+     padding: 13px 18px;
+     margin-top: 60px;
+     position: relative;
+}
+
+.container .commonScore {
+     width: 100%;
+     display: flex;
+     justify-content: flex-end;
+     font-size: 20px;
+     font-weight: 700;
+     color: rgb(4, 44, 44);
+}
+
+.container .question {
+     margin-top: 10px;
+     font-size: 20px;
+     font-weight: 500;
+     text-align: center;
+}
+
+.container .button {
+     display: flex;
+     justify-content: center;
+}
+
+.container .inputBox {
+     display: flex;
+     justify-content: center;
+     margin-top: 20px;
+}
+
+.container .inputBox input {
+     width: 90%;
+     border: none;
+     outline: none;
+     font-size: 20px;
+     font-weight: 600;
+     padding: 9px 0 9px 10px;
+}
+
+.container .inputBox input::placeholder {
+     font-weight: 400;
+     font-size: 18px;
+}
+
+.container .nextBtn {
+     background: linear-gradient(to right, deeppink, rgba(0, 0, 255, 0.449));
+     padding: 9px 10px;
+     border-radius: 5px;
+     border: none;
+     font-weight: 600;
+     letter-spacing: .90px;
+     color: white;
+     cursor: pointer;
+     margin-top: 15px;
+     width: 90%;
+     transition: .1s ease-in;
+}
+
+.container .nextBtn:hover {
+     opacity: .6;
+}

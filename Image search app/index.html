@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Image serch app using javascript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        * {
+            padding: 0;
+            margin: 0; 
+            box-sizing: border-box;
+        }
+
+        #cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: flex-start;
+            margin-top: 20px;
+            padding-left: 1%;
+            margin-bottom: 15px;
+        }
+
+        #cardItems {
+            height: fit-content;
+            cursor: pointer;
+            width: 21rem;
+        }
+
+        #cardItems img {
+            width: 100% !important;
+            height: 260px !important;
+            object-fit: cover;
+        }
+
+        #option::-webkit-scrollbar {
+            width: 0px;
+            display: none;
+        }
+
+        #option {
+            margin-top: 8px;
+            display: flex;
+            gap: 6px;
+            padding-left: 6px;
+            overflow-x: auto;
+        }
+
+        #option .option-items {
+            font-size: 14.30px;
+            background: rgba(0, 0, 0, 0.064);
+            padding: 7px 20px;
+            border-radius: 7px;
+            cursor: pointer;
+            transition: .1s linear;
+        }
+        #searhArea  {
+            width: 60%;
+        }
+
+        #option .option-items:hover {
+            opacity: .8;
+        }
+
+        #option .option-items.active {
+            background: rgba(0, 0, 0, 0.3);
+            color: rgb(159, 156, 156), 147, 147;
+            font-weight: 500;
+        }
+
+        #dev-name {
+            display: none;
+        }
+
+        .top-header-opt {
+            display: flex;
+            justify-content: space-between;
+            width: 100%; 
+        }
+
+        #bottom-footer {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            color: rgb(164, 161, 161);
+            font-size: 16px; 
+            padding: 10px 10px; 
+        }    
+        #bottom-footer  p {
+            margin-bottom: 0px !important;     
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif  !important;
+        }
+  
+        /* Responsiveness  */ 
+        @media(max-width: 1080px) { 
+            #cards {
+                justify-content: center;
+            }
+        }
+
+        @media(max-width: 1069px) {
+            #cardItems {
+                height: fit-content;
+                cursor: pointer;
+                width: 48% !important;
+            }
+        }
+
+        @media(max-width: 740px) {
+            #cardItems {
+                height: fit-content;
+                cursor: pointer;
+                width: 100% !important;
+            }
+
+            #option {
+                padding-left: 3px !important;
+            }
+
+            #cards {
+                padding-left: 0px !important;
+            }
+        }
+
+        @media(max-width: 521px) {
+            #searhArea {
+                width: 100%;
+            }
+
+            #dev-name {
+                display: inline !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar  -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <div class="top-header-opt">
+                <a class="navbar-brand" href="#" style="font-weight: 500;">Images</a>
+                <a class="navbar-brand" href="#" id="dev-name">Aman Raj</a>
+            </div>
+
+            <div id="searhArea">
+                <div class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search any image..." aria-label="Search"
+                        id="inputBox">
+                    <button class="btn btn-outline-success" type="submit" id="submitBtn">Search</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- options bar  -->
+    <div id="option">
+        <div class="option-items">Animals</div>
+        <div class="option-items">Programming</div>
+        <div class="option-items">Electronics</div>
+        <div class="option-items">Products</div>
+        <div class="option-items">Nature</div>
+        <div class="option-items">Houses</div>
+        <div class="option-items">Vehicles</div>
+        <div class="option-items">Books</div>
+        <div class="option-items">Trees</div>
+        <div class="option-items">Fish</div>
+        <div class="option-items">Landscape</div>
+        <div class="option-items">Human</div>
+        <div class="option-items">Sunshine</div>
+        <div class="option-items">Water</div>
+        <div class="option-items">Land</div>
+        <div class="option-items">City</div>
+    </div>
+
+    <!-- Cards sections  -->
+    <div id="cards">
+
+
+    </div>
+  
+<footer>
+    <div id="bottom-footer">
+        <p>Copyright &COPY; Image search app created by developer Aman Raj from aurangabad (bihar)</p>
+    </div>
+</footer>
+
+    <script>
+
+
+
+        window.addEventListener('load', fetchData('hacking'))
+
+        async function fetchData(querry) {
+            // intializing variables 
+            const apiKEY = "&client_id=AvPm9Bju7sFpH_depxJG0CG-YMKY2C8A2YLCPxwAikI";
+            const apiURL = "https://api.unsplash.com/search/photos?query=";
+            const fetchURL = await fetch(`${apiURL}${querry}${apiKEY}`);
+            const response = await fetchURL.json();
+            const responseArr = response.results;
+
+            // adding images
+            function addImages() {
+                const cardsCont = document.querySelector('#cards')
+                iHTML = "";
+                responseArr.forEach((el) => {
+                    let imgTitle = el.tags[2].title
+                    iHTML += `  
+                    <div id="cardItems" class="card">    
+                                   <img src="${el.urls.full}" class="card-img-top" alt="...">
+                                   <div class="card-body">     
+                                       <h5 class="card-title">${imgTitle}</h5>         
+                                      <p class="card-text">${el.alt_description}</p>                
+                                     <div class="learn-mre-btn my-2"> <a href="${el.links.dowload}" target="_blank" class="btn btn-primary">Learn more</a> </div> 
+                                    </div>  
+                                </div>     
+                    `;
+                })
+                cardsCont.innerHTML = iHTML;
+            }
+            addImages()
+
+            // Search Bar Functionality
+            const inputBox = document.querySelector('input')
+            let searchbtn = document.querySelector('#submitBtn')
+            searchbtn.addEventListener('click', () => {
+                let inputValue = inputBox.value.trim()
+                fetchData(inputValue)
+            })
+
+            // option menu 
+            function optionMenu() {
+                const optionItems = document.querySelectorAll('.option-items');
+                optionItems.forEach((el) => {
+                    let txtContent = el.textContent
+                    el.onclick = function () {
+                        fetchData(txtContent)
+                        optionItems.forEach((item) => {
+                            item.classList.remove('active');
+                        });
+                        el.classList.add('active');
+                    }
+                })
+            }
+            optionMenu()
+        }
+
+
+
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

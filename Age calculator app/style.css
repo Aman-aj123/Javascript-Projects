@@ -1,0 +1,105 @@
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+html,body{
+     width: 100%;
+     height: 100%;
+}
+
+body {
+     background: linear-gradient(45deg, aqua, #dadada, #ffff);
+     display: flex;
+     justify-content: center; 
+}
+
+#main {
+     margin-top: 40px;
+     width: 55%;
+     border-radius: 7px;
+     padding: 20px 18px;
+     background: linear-gradient(to right, rgba(195, 216, 216, 0.108)(0, 255, 255, 0.493), #dadada);
+     height: fit-content;
+     box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+#suggestTxt {
+     margin-bottom: 10px;
+}
+
+.searchArea {
+     overflow: hidden;
+     width: 100%;
+     height: 50px;
+     background: rgba(0, 0, 0, 0.1);
+     border-radius: 4px;
+     display: flex;
+     justify-content: space-between;
+     padding: 0px 0px;
+     padding-left: 20px;
+}
+
+.searchArea input {
+     color: rgb(108, 105, 105);
+     width: 100%;
+     font-size: 20px;
+     letter-spacing: 2px;
+     font-weight: 500;
+     background: transparent;
+     border: none;
+     outline: none;
+     cursor: pointer;
+}
+
+.searchArea button {
+     background: linear-gradient(to right, white, #dadada);
+     box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+     height: 100%;
+     padding: 0 15px;
+     font-size: 17px;
+     letter-spacing: .70px;
+     font-weight: 600;
+     cursor: pointer;
+     transition: .2s;
+     border: none;
+}
+
+.searchArea button:hover {
+     opacity: .6;
+}
+
+.resArea {
+     width: 100%;
+}
+
+.resArea {
+     margin-top: 10px;
+}
+
+.resArea h3 {
+     font-size: 20px;
+     font-weight: 500;
+     color: rgb(43, 41, 41);
+}
+
+.resArea .ageRes {
+     font-weight: 700;
+     letter-spacing: .70px;
+     color: orange;
+     margin-right: 2px;
+}
+
+
+/* Responsiveness  */
+@media(max-width: 818px) {
+     #main {
+          width: 95%;
+     }
+}
+@media(max-width: 450px) {
+     #main {
+          width: 98%;
+     }
+}

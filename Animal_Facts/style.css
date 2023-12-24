@@ -1,0 +1,173 @@
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html,
+body {
+     width: 100%;
+     height: 100%;
+     overflow-x: hidden;
+}
+
+body {
+     background: #dadada;
+}
+
+#main {
+     width: 100%;
+     height: 100%;
+     position: relative;
+}
+
+
+
+.preloader {
+     width: 100%;
+     height: 70vh;
+     display: flex;
+     position: absolute;
+     top: -10px;
+     left: 0;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background: #DADADA;
+}
+
+.preloader img {
+     width: 100px;
+}
+
+/* hide preloader  */
+.hide-preloader {
+     display: none;
+}
+
+.searchBar {
+     width: 50%;
+     height: 40px;
+     overflow: hidden;
+     min-width: 300px;
+     background: white;
+     border-radius: 6px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     margin: auto;
+     margin-top: 70px;
+}
+
+.searchBar input {
+     border: none;
+     outline: none;
+     font-size: 16px;
+     font-weight: 500;
+     height: 100%;
+     padding-left: 20px;
+     width: 100%;
+}
+
+.searchBar button {
+     background: orange;
+     color: rgb(245, 243, 243);
+     font-weight: 500;
+     font-size: 16px;
+     letter-spacing: .70px;
+     height: 100%;
+     padding: 0 10px;
+     border: none;
+     cursor: pointer;
+     transition: .1s ease-in-out;
+}
+
+.searchBar button:hover {
+     opacity: .5;
+}
+
+.animal-image {
+     width: 58%;
+     margin: auto;
+     margin-top: 45px;
+     margin-bottom: 5px;
+}
+
+.animal-image img {
+     border-radius: 5px;
+     width: 325px;
+     height: 225px;
+     object-fit: cover;
+}
+
+.fact-name {
+     width: 58%;
+     margin: auto;
+     margin-top: 45px;
+     margin-bottom: 5px;
+}
+
+.facts-area {
+     width: 100%;
+     margin-top: 10px;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+
+}
+
+.facts-area .facts-items {
+     color: white;
+     padding: 8px 10px;
+     font-size: 17px;
+     margin-bottom: 17px;
+     min-width: 310px;
+     width: 60%;
+     border-radius: 7px;
+     line-height: 1.4;
+     cursor: pointer;
+     transition: .1s ease-in-out;
+}
+
+.facts-area .facts-items:hover {
+     opacity: .8;
+     background: rgb(242, 239, 239);
+}
+
+
+/* Responsiveness  */
+@media(max-width: 530px) {
+     .animal-image {
+          text-align: center;
+          width: 100%;
+     }
+}
+
+@media(max-width: 680px) {
+     .searchBar {
+          width: 95%;
+     }
+}
+
+@media(max-width: 400px) {
+     .facts-area .facts-items {
+          width: 94%;
+     }
+
+}
+
+/* Error titles  */
+
+@media(max-width: 630px) {
+     .fact-error-title {
+          font-size: 19px;
+          text-align: left;
+     }
+
+     .main-error-title {
+          font-size: 24px;
+          text-align: center;
+     }
+}

@@ -1,0 +1,204 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    user-select: none;
+}
+
+html, body { 
+    height: 100%;
+     width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+   background-repeat: no-repeat;
+    height: 100vh;
+    gap: 20px;
+    align-items: center;
+     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(45deg, red,blue);
+ }
+
+ .anim {
+    overflow: hidden;
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+    top: 0;
+ }
+
+   .anim-box {
+    background-color: rgba(255, 255, 255, 0.109);
+    z-index:  -1;
+    position: absolute;
+    bottom: -1000px;
+    border-radius: 10px;
+    animation: anim 9s  linear infinite;
+  }
+
+  .anim-box:nth-child(1) {
+    width: 120px;
+    height: 90px;
+    left: 10px;
+    animation-duration: 10s;
+    animation-delay: 4s;
+  } 
+  .anim-box:nth-child(2) {
+    width: 40px;
+   height: 30px;
+   left: 180px;
+   animation-duration: 8s;
+   animation-delay: 1s;
+  }
+  .anim-box:nth-child(3) {
+    width: 200px;
+   height: 130px;
+   left: 300px;
+   animation-duration: 9s;
+   animation-delay: 6s;
+  
+  }
+  .anim-box:nth-child(4) {
+    width: 100px;
+   height: 100px;
+   left: 580px;
+   animation-duration: 8s;
+   animation-delay: 3s;
+   }
+  .anim-box:nth-child(5) {
+    width: 70px;
+   height: 70px;
+   left: 760px;
+   animation-duration: 10s;
+   animation-delay: 0s;
+   }
+
+  .anim-box:nth-child(6) {
+    width: 130px;
+   height: 140px;
+   left: 920px;
+   animation-duration: 9s;
+   animation-delay: 1s;
+   }
+
+   @keyframes anim {
+    0% {
+        opacity: 1;
+      bottom: 0;
+      transform: rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        bottom: 400px;
+      transform: rotate(360deg);
+    }
+   }
+
+ .m-dates {
+    display: flex;
+    gap: 4px;
+    font-size: 55px;
+    color: rgb(64, 255, 0);
+    font-weight: 700;
+    justify-content: center;
+ }
+  
+
+.clock-parent{
+    display: flex;
+    gap: 20px;
+    position: relative;
+    margin-bottom: 3px;
+}
+
+.cl {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.696);
+    color: orange;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 50px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    height: 190px; 
+     width: 20vw;
+     min-width: 200px;
+      background: rgb(189, 214, 189);
+}
+
+.cl p {
+    color: white;
+    letter-spacing: 1px;
+    font-size: 20px;
+    padding: 8px 0;
+background: green;
+font-weight: 500;
+width: 100%;
+text-align: center;
+ 
+}
+
+.main-time {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    height: 90%;
+    text-shadow: 0 -4px 10px rgba(0, 0, 0, 0.552);
+ }
+
+ 
+.t-period {
+    position: absolute;
+    bottom: 10px;
+    right: -90px;
+    font-size: 20px;
+    background: rgb(233, 49, 148);
+    color: white;
+    font-weight: 500;
+   padding: 3px 20px;
+   box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.696);
+}
+
+
+@media(max-width: 644px) {
+    .clock-parent {
+        gap: 10px;
+        flex-direction: column;
+        margin-top: 60px;
+        margin-bottom: 50px;
+        margin: auto;
+    }
+
+    .main-time {
+        height: 54%;
+    }
+
+    .cl {
+        height: 175px
+    }
+    body {
+        align-items: inherit;
+    }
+    .t-period {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 50px;
+        width: 200px;
+        position: absolute;
+        bottom: 10px;
+        left: 0px;
+        font-size: 20px;
+        background: rgb(233, 49, 148);
+        color: white;
+        font-weight: 500;
+       padding: 3px 20px;
+       box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.696);
+    }
+}

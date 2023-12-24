@@ -1,0 +1,83 @@
+* {
+     padding: 0;
+     margin: 0;
+     box-sizing: border-box;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html,
+body {
+     width: 100%;
+     height: 100%;
+}
+
+body {
+     background: #dadadab8;
+}
+
+#main {
+     width: 100%;
+     margin: auto;
+     padding: 10px 20px;
+}
+
+.filter-buttons {
+     width: 100%;
+     display: flex;
+     gap: 20px;
+     margin-top: 30px;
+     flex-wrap: wrap;
+}
+
+.filter-buttons button {
+     background: rgba(0, 0, 0, 0.1);
+     font-weight: 500;
+     letter-spacing: .80px;
+     font-size: 16px;
+     border-radius: 7px;
+     border: none;
+     outline: none;
+     padding: 9px 8px;
+     cursor: pointer;
+     transition: .1s ease-in;
+}
+
+.filter-buttons button:hover {
+     background: rgba(0, 0, 0, 0.2);
+}
+
+.filter-buttons button.active {
+     background: blue;
+     color: white;
+     transition: .1s ease-in;
+}
+
+.filter-image-container {
+     width: 100%;
+     display: flex;
+     gap: 30px;
+     margin-top: 30px;
+     flex-wrap: wrap;
+}
+
+.filter-image-container .filter-images {
+     width: 220px;
+     height: 220px;
+     border-radius: 7px;
+     overflow: hidden;
+     background: white;
+     box-shadow: rgba(0, 0, 0, 0.1);
+}
+
+.filter-images img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+}
+
+/* // Hide class  */
+.filter-image-container .filter-images.hide {
+   opacity: 0;
+   display: none;
+   transition: .2s ease-in;
+}

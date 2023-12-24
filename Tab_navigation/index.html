@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Tab navigation | Javascript project</title>
+     <style>
+          * {
+               padding: 0;
+               margin: 0;
+               box-sizing: border-box;
+               font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+               ;
+          }
+
+          html,
+          body {
+               width: 100%;
+               height: 100%;
+          }
+
+          #main {
+               margin: auto;
+               margin-top: 60px;
+               width: 700px; 
+          }
+
+          .tab-buttons {
+               display: flex;
+               gap: 20px;
+               flex-wrap: wrap; 
+          }
+
+          .tab-buttons .tab-items {
+               background: rgba(0, 0, 0, 0.1);
+               font-weight: 500;
+               color: black;
+               letter-spacing: .80px;
+               font-size: 17px;
+               cursor: pointer;
+               transition: .1s ease-in-out;
+               padding: 9px 14px;
+               border-radius: 6px;
+               /* color: whitesmoke; */
+          }
+
+          .tab-items:hover {
+               opacity: .6;
+          }
+
+          .tab-items.active {
+               background: purple;
+               color: whitesmoke;
+          }
+
+          .tab-container {
+               margin-top: 40px;
+          }
+
+          .tab-main-items {
+               margin-top: 30px;
+          }
+
+          .tab-main-items h3 {
+               margin-top: 20px;
+
+          }
+
+          .tab-main-items p {
+               margin-top: 40px;
+          }
+
+          .hide {
+               display: none;
+          }
+     </style>
+</head>
+
+<body>
+
+
+     <div id="main">
+          <div class="tab-buttons">
+               <div class="tab-items active" data-name="Home">Home</div>
+               <div class="tab-items" data-name="About">About</div>
+               <div class="tab-items" data-name="Services">Services</div>
+               <div class="tab-items" data-name="Contact">Contact</div>
+          </div>
+
+          <div class="tab-container">
+               <div class="tab-main-items" data-name="Home">
+                    <h3>Home</h3>
+                    <h2>This is home section </h3>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut expedita sunt eveniet molestiae ad,
+                    delectus vero mollitia aperiam consequuntur numquam odit quidem ducimus nesciunt assumenda
+                    blanditiis? Quae, quia! Recusandae, nemo.
+               </div>
+               <div class="tab-main-items hide" data-name="About">
+                    <h3>About</h3>
+                    <h2>This is About section </h3>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut expedita sunt eveniet molestiae ad,
+                    delectus vero mollitia aperiam consequuntur numquam odit quidem ducimus nesciunt assumenda
+                    blanditiis? Quae, quia! Recusandae, nemo.
+               </div>
+               <div class="tab-main-items hide" data-name="Services">
+                    <h3>Services</h3>
+                    <h2>This is Services section </h3>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut expedita sunt eveniet molestiae ad,
+                    delectus vero mollitia aperiam consequuntur numquam odit quidem ducimus nesciunt assumenda
+                    blanditiis? Quae, quia! Recusandae, nemo.
+               </div>
+               <div class="tab-main-items hide" data-name="Contact">
+                    <h3>Contact</h3>
+                    <h2>This is Contact section </h3>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut expedita sunt eveniet molestiae ad,
+                    delectus vero mollitia aperiam consequuntur numquam odit quidem ducimus nesciunt assumenda
+                    blanditiis? Quae, quia! Recusandae, nemo.
+               </div>
+          </div>
+     </div>
+
+
+     <script defer>
+
+          // Intializing the important variables
+          const tabButtons = document.querySelectorAll('.tab-items');
+          const tabMainItems = document.querySelectorAll('.tab-main-items');
+          // Iteration on tableButtons and adding eventlistener
+          tabButtons.forEach((e) => {
+               e.onclick = function () {
+                    tabButtons.forEach((element) => {
+                         element.classList.remove('active')
+                    })
+                    e.classList.add('active')
+
+                    // Iteration on tabMainItems
+                    tabMainItems.forEach((item) => {
+                         item.classList.add('hide')
+                         if (item.dataset.name === e.dataset.name) {
+                              item.classList.remove('hide')
+                         }
+                    })
+               }
+          })
+
+     </script>
+
+</body>
+
+</html>

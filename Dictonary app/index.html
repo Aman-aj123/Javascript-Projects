@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>English Dictonary app using javascirpt.</title>
+     <style>
+          * {
+               padding: 0;
+               margin: 0;
+               box-sizing: border-box;
+               font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          }  
+
+          html,
+          body {  
+               width: 100%;
+               overflow-x: hidden;
+          }
+
+
+          body {
+               margin-top: 20px;
+               margin-bottom: 30px;
+               justify-content: center;
+               flex-direction: column;
+               background: linear-gradient(to right, yellow, orange);
+          }
+
+          #wrapper {
+               width: 100%;
+               display: flex;
+               flex-direction: column;
+               justify-content: center;
+               align-items: center;
+          }
+
+
+          .dictonary-cont {
+               margin-top: 70px;
+               overflow-x: hidden;
+               padding: 30px 40px;
+               border-radius: 5px;
+               margin-top: 20px;
+               width: 50%;
+               background: white;
+               box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+               display: flex;
+               justify-content: center;
+               flex-direction: column;
+               align-items: center;
+          }
+
+          .search-area {
+               display: flex;
+               justify-content: center;
+               width: 100%;
+               background: white;
+          }
+
+          .search-area input {
+               background: transparent;
+               font-size: 16px;
+               letter-spacing: .70px;
+               border: none;
+               width: 100%;
+               outline: none;
+          }
+
+          .search-area button {
+               font-size: 16px;
+               padding: 9px 20px;
+               border-radius: 5px;
+               background: deeppink;
+               border: none;
+               cursor: pointer;
+               color: white;
+               font-weight: 500;
+               transition: .2s linear;
+          }
+
+          .search-area button:hover {
+               background: rgb(227, 12, 127);
+          }
+
+          .search-result {
+               width: 100%;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               margin-top: 20px;
+               flex-direction: column;
+          }
+
+          #audio {
+               margin-top: 15px;
+          }
+
+          #errMsg {
+               background: rgba(0, 0, 0, 0.8);
+               padding: 10px 20px;
+               border-radius: 5px;
+               box-shadow: 0 0 7px rgba(0, 0, 0, 0.4);
+               font-size: 18px;
+               letter-spacing: .50px;
+               color: red;
+               position: absolute;
+               right: -600%; 
+               top: 5px;
+               transition: .3s;
+          }
+
+          #devinfo {
+               width: 70%;
+               background: rgba(255, 255, 255, 0.213);
+               padding: 20px 20px;
+               border-radius: 5px;
+          }
+
+          #devinfo h2 {
+               font-size: 34px;
+               color: white;
+          }
+
+          #devinfo h2 span {
+               color: purple;
+               font-weight: 500;
+          }
+
+          #devinfo p {
+               color: rgb(73, 71, 71);
+               font-size: 16px;
+          }
+
+          @media(max-width: 640px) {
+
+               #devinfo {
+                    width: 99%;
+               }
+
+               .dictonary-cont {
+                    width: 99% !important;
+               }
+          }
+
+          @media(max-width: 560px) {
+               #devinfo h2 {
+                    font-size: 30px;
+                    color: white;
+               }
+          }
+     </style>
+</head>
+
+<body>
+     <div id="wrapper">
+          <div id="devinfo">
+               <h2>Here, I am <span>Aman Kumar</span> Welcome to my new project Word meaning Pronounciation with
+                    voice...</h2>
+               <p> I have build this awesome word meaning pronounciation application where you can search any word
+                    meaning
+                    and based on your prompt it will pronounce the meanings with voice. So, Checkout my this project and
+                    rate
+                    me....</p>
+          </div>
+          <div class="dictonary-cont">
+               <div class="search-area">
+                    <input type="text" id="input" placeholder="Search your word...">
+                    <button id="searchBtn">Search</button>
+               </div>
+               <div class="search-result">
+                    <div id="searchTitle"> </div>
+                    <div id="quesDes"> </div>
+                    <audio controls src="" id="audio"></audio>
+               </div>
+
+          </div>
+          <div id="errMsg"> You got some error check your internet eighter api and try again. </div>
+     </div>
+     <!-- javascript  -->
+     <script>
+
+          audio.style.display = "none"
+          async function getDictonary(word) {
+               try {
+                    searchTitle.textContent = `Loading your meaning with ${word}..`;
+
+                    const apiURL = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
+                    const apiResponse = await fetch(apiURL)
+                    const data = await apiResponse.json()
+                    console.log(data)
+
+                    searchTitle.textContent = "";
+                    quesDes.textContent = ""
+                    quesDes.textContent = `Description: ${data[0].meanings[0].definitions[0].definition}`;
+
+                    if (data[0].phonetics[0].audio) {
+
+                         audio.style.display = "block";
+                         let sound = audio.src = data[0].phonetics[0].audio
+                         console.log(sound)
+                    } else {
+                         audio.style.display = "none";
+                         let sound = ""
+                         console.log(sound)
+                    }
+
+
+               } catch (error) {
+                    console.log("You got some error", error)
+                    errMsg.style.right = "0%"
+                    setTimeout(() => {
+                         errMsg.style.right = "-100%"
+                    }, 5000)
+               }
+          }
+
+          const inputEl = document.querySelector('#input')
+          inputEl.addEventListener('keyup', function (el) {
+               const inputValue = inputEl.value.trim();
+               if (el.key === "Enter") {
+                    getDictonary(inputValue)
+               }
+          })
+
+          searchBtn.onclick = function () {
+               inputVal = inputEl.value.trim()
+               getDictonary(inputVal) 
+          } 
+
+     </script>
+</body>
+
+</html>

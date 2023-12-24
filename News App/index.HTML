@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>News app using javascript</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    #cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 20px;
+      padding-left: 1%;
+      margin-bottom: 15px;
+    }
+
+    #cardItems {
+      height: fit-content;
+      cursor: pointer;
+      overflow-y: hidden;
+    }
+
+    #cardItems .card-title {
+      font-size: 17px !important;
+    }
+
+    #cardItems p {
+      font-size: 15.20px !important;
+    }
+
+    #cardItems img {
+      width: 100% !important;
+      height: 240px !important;
+      object-fit: cover;
+    }
+
+    .searchItem {
+      width: 40%;
+      min-width: 330px;
+    }
+
+    .details-info .common-info-title {
+      font-weight: 500;
+      font-size: 23px;
+    }
+
+    .details-info .common-info-res {
+      font-weight: 500;
+      font-size: 20px;
+      color: rgb(84, 82, 82);
+    }
+
+    .details-info {
+      margin-left: 30px;
+      margin-top: 30px;
+      display: none;
+    }
+
+    /* Responsive  */
+
+    @media(max-width: 376px) {
+      .searchItem {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation Bar  -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">News</a>
+      </button>
+      <div id="navbarSupportedContent" class="searchItem">
+        <div class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search Current News..." aria-label="Search"
+            id="inputBox">
+          <button class="btn btn-outline-success" type="submit" id="submitBtn">Search</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- select menus  -->
+  <ul class="nav nav-tabs my-2">
+    <li class="nav-item">
+      <a class="nav-link" href="#">All</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Politics</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Finance</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Sports</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Cricket</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Virat Kohli</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">India</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Pakistan</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">China</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Afganistan</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Others</a>
+    </li>
+  </ul>
+
+  <!-- details sections  -->
+  <div class="details-info">
+    <div class="querry-option" style="margin-bottom: 7px;"> <span id="querry-title" class="common-info-title">Your
+        querry: </span> <span id="querry-result" class="common-info-res"></span>
+    </div>
+
+    <span id="total-title" class="common-info-title">Total results</span> <span id="total-res"
+      class="common-info-res"></span>
+  </div>
+  <!-- Cards sections  -->
+  <div id="cards">
+
+
+  </div>
+
+
+
+  <script>
+    // Declaring a variables  
+    const detailsInfo = document.querySelector('.details-info')
+    const querryResult = document.querySelector('#querry-result')
+    const totalResult = document.querySelector('#total-res')
+
+    window.addEventListener('load', fetchData("sports"))
+
+    // Fetching the api    
+    async function fetchData(querry) {
+      let newsArticles = [];
+      // making the request 
+      const xhr = new XMLHttpRequest()
+      xhr.open('GET', `https://newsapi.org/v2/everything?q=${querry}&from=2023-10-04&sortBy=publishedAt&apiKey=fc52c124858f43fc8cd8a93049fe5fac`, true)
+
+      // Checking the result
+      xhr.onload = function () {
+        if (this.status === 200) {
+          json = JSON.parse(this.responseText)
+          newsArticles = json.articles
+          addNewsItem()
+        }
+        else {
+          console.log("Some error occured")
+        }
+      }
+
+
+      // Adding news items
+      function addNewsItem() {
+        let cartArea = document.querySelector('#cards')
+        iHTML = '';
+        newsArticles.forEach((item) => {
+          const newsDate = new Date(item.publishedAt).toLocaleString("en-US", {
+            timeZone: "Asia/Jakarta"
+          })
+
+
+
+          iHTML += `        
+                                    <div id="cardItems" class="card" style="width: 21rem;">   
+                                      <img src="${item.urlToImage ? item.urlToImage : 'newsimg.webp'}" class="card-img-top" alt="...">   
+                                      <div class="card-body">      
+                                         <h5 class="card-title">${item.title ? item.title : ''}</h5>   
+                                         <b>Published at: </b> <span>${newsDate ? newsDate : ''}</span>   
+                                         <p class="card-text">${item.description ? item.description : ''}</p>              
+                                         <p class="card-text">${item.content}</p>    
+                                         <b>Author name: </b> <span>${item.author}</span>            
+                                        <div class="learn-mre-btn my-2"> <a href="${item.url}" target="_blank" class="btn btn-primary">Learn more</a> </div> 
+                                       </div>  
+                                   </div>                             
+                                   `
+        })
+        cartArea.innerHTML = iHTML;
+      }
+
+      xhr.send()
+    }
+
+
+
+    // Search bar functionnality      
+
+
+    const searchBtn = document.querySelector('#submitBtn');
+    const inputBox = document.querySelector('#inputBox');
+
+    searchBtn.addEventListener('click', () => {
+      const inputValue = inputBox.value.trim();
+      fetchData(inputValue);
+      detailsInfo.style.display = "block"
+      setTimeout(() => { totalResult.textContent = `(${json.totalResults})` }, 2000);
+      querryResult.textContent = `${inputValue}`
+    });
+
+    inputBox.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        const inputValue = inputBox.value.trim();
+        fetchData(inputValue);
+        detailsInfo.style.display = "block"
+        totalResult.textContent = `(${json.totalResults})`
+        querryResult.textContent = `${inputValue}`
+      }
+    });
+
+    // Options menu
+    function optionMenu() {
+      const menuItems = document.querySelectorAll('.nav-item')
+      menuItems.forEach((itm) => {
+        const itmText = itm.textContent;
+        itm.onclick = function () {
+          fetchData(itmText)
+          console.log(itmText)
+        }
+      })
+    }
+    optionMenu()
+
+
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+</body>
+
+</html> 

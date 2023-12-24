@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Sticky Navbar</title>
+     <style>
+          * {
+               padding: 0;
+               margin: 0;
+               box-sizing: border-box;
+               font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          }
+
+          .navbar {
+               position: relative;
+               height: 50px;
+               width: 100%;
+               background: lightblue;
+               color: white;
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+               padding: 10px 20px;
+          }
+
+          .navitems {
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               gap: 10px;
+          }
+
+          .navitems li {
+               list-style: none;
+          }
+
+          .navitems li a {
+               color: white;
+               text-decoration: none;
+               cursor: pointer;
+          }
+
+          .navContent {
+               width: 100%;
+               height: 700px;
+               background: rgb(147, 147, 183);
+               color: white;
+               margin-bottom: 50px;
+               margin-top: 100px;
+          }
+
+          .sticky {
+               position: fixed;
+               top: 0;
+               width: 100%;
+               z-index: 999;
+               transition: .4s ease-in;
+               background: orange;
+          }
+     </style>
+</head>
+
+<body>
+
+
+     <div class="navbar">
+          <div class="navitems">
+               <li><a href="#">Home</a></li>
+               <li><a href="#">About</a></li>
+               <li><a href="#">Services</a></li>
+               <li><a href="#">Contact</a></li>
+          </div>
+          <div class="button"><button>Search</button></div>
+     </div>
+
+     <div class="navContent">
+          Home
+     </div>
+     <div class="navContent">
+          About
+     </div>
+     <div class="navContent" id="Services">
+          Services
+     </div>
+     <div class="navContent">
+          Contact
+     </div>
+
+
+     <script>
+          const navBar = document.querySelector('.navbar');
+          const button = document.querySelector('.button');
+     
+          const servicesSection = document.getElementById('Services');
+     
+          window.addEventListener('scroll', startScroll);
+     
+          function startScroll() {
+               const servicesSectionPosition = servicesSection.offsetTop;
+     
+               if (window.scrollY > servicesSectionPosition) {
+                    navBar.classList.add('sticky');
+               } else {
+                    navBar.classList.remove('sticky');
+               }
+          }
+     </script>
+     
+</body>
+
+</html>

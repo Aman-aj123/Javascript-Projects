@@ -1,0 +1,86 @@
+* {
+     padding: 0;
+     margin: 0;
+     box-sizing: border-box;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html,
+body {
+     width: 100%;
+     height: 100%;
+}
+
+body {
+     background: linear-gradient(to right, aqua, pink);
+}
+
+#main {
+     width: 100%;
+     display: flex;
+     justify-content: center;
+}
+
+.container {
+     margin-top: 60px;
+     width: 500px;
+     overflow: hidden;
+     border-radius: 6px;
+}
+
+.container h3 {
+     font-size: 25px;
+     font-weight: 700;
+     letter-spacing: .80px;
+}
+
+.container h4 {
+     margin-top: 20px;
+     font-size: 18px;
+     line-height: 1.1;
+     font-weight: 500;
+     letter-spacing: .80px;
+     color: rgb(28, 28, 28);
+}
+
+.container .textArea {
+     width: 100%;
+     margin-top: 20px;
+     height: 140px;
+     background: white;
+     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+     padding: 10px 15px;
+}
+
+.textArea textarea {
+     width: 90%;
+     height: 90%;
+     border: none;
+     outline: none;
+     font-size: 17px;
+     letter-spacing: .80px;
+}
+
+.choice-container {
+     margin-top: 10px;
+     width: 100%;
+     display: flex;
+     flex-wrap: wrap;
+     gap: 15px;
+     row-gap: 12px;
+}
+
+.choice-container .choice-items {
+     background: rgb(234, 25, 137);
+     border: none;
+     border-radius: 15px;
+     padding: 9px 8px;
+     color: white;
+     font-weight: 400;
+     letter-spacing: .80px;
+     font-size: 16px;
+}
+
+.choice-container .choice-items.active-choice {
+     background: rgba(0, 0, 0, 0.8);
+}

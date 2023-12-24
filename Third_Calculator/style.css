@@ -1,0 +1,101 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    user-select: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9))
+}
+
+.main {
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 20px;
+    box-shadow: 0 0px 9px rgba(117, 108, 108, 0.7);
+}
+
+#input {
+    font-size: 35px;
+    font-weight: 700;
+    color: blue;
+    text-align: right;
+    width: 250px;
+    height: 90px;
+    padding-right: 20px;
+    margin-bottom: 5px;
+    pointer-events: none;
+    outline: none;
+    background: transparent;
+    border: none;
+    box-shadow: 0 0px 9px rgba(34, 33, 33, 0.7) inset;
+    border-radius: 5px;
+}
+
+.calc {
+    display: grid;
+    grid-template-columns: repeat(4, 0fr);
+ }
+
+.calc button {
+    height: 53px;
+    width: 53px;
+    font-size: 18px;
+    font-weight: 470;
+    cursor: pointer;
+    background: transparent;
+    color: white;
+    border: none;
+    box-shadow: 0 0px 5px rgba(87, 84, 84, 0.7);
+    margin: 5px 6px;
+    letter-spacing: 2px;
+    transition: .1s;
+}
+
+.calc button:hover {
+    background: rgb(39, 38, 38);
+}
+
+.calc button:focus {
+    box-shadow: 0 0px 5px rgba(29, 24, 24, 0.7) inset;
+}
+
+.calc .all-clear {
+    background-color: rgb(10, 206, 10);
+    border: none;
+    box-shadow: 0 3px 5px rgba(32, 31, 31, 0.7);
+    transition: .1s;
+}
+
+.calc .all-clear:hover {
+    background-color: rgb(9, 147, 9);
+    border: none;
+}
+
+.calc .equal {
+    background-color: rgb(224, 176, 17);
+    border: none;
+    box-shadow: 0 3px 9px rgba(34, 33, 33, 0.7);
+    grid-column: span 2;
+    width: 91%;
+    transition: .1s;
+}
+
+.calc .equal:hover {
+    background-color: rgb(143, 112, 13);
+    border: none;
+}
+
+.calc .ope {
+    color: aqua;
+    font-weight: 600;
+}

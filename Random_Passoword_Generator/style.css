@@ -1,0 +1,187 @@
+* {
+     padding: 0;
+     margin: 0;
+     box-sizing: border-box;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     user-select: none;
+}
+
+html,
+body {
+     width: 100%;
+     height: 100%;
+     overflow-x: hidden;
+}
+
+#main {
+     padding: 10px 0px;
+     width: 100%;
+     min-height: 100vh;
+     background-image: url("https://cdn.mos.cms.futurecdn.net/5fz9SMYxWbv44jFVcD4vmd.jpg");
+     background-size: cover;
+     background-position: center center;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+.passoword-container {
+     width: 30%;
+     min-width: 330px;
+     margin: auto;
+     border-radius: 2px;
+     padding: 9px 0px;
+     background: #222629;
+     color: white;
+}
+
+.passoword-appear {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     width: 98%;
+     margin: auto;
+     margin-top: 10px;
+     padding: 0px 0 0px 10px;
+     height: 40px;
+     background: white;
+     border-radius: 2px;
+     overflow: hidden;
+}
+
+.passoword-appear .copy-btn {
+     height: 100%;
+     width: 60px;
+     cursor: pointer;
+     font-weight: 500;
+     font-size: 15px;
+     color: white;
+     background: rgb(45, 238, 45);
+     letter-spacing: .80px;
+     border: none;
+     outline: none;
+     transition: .1s ease-in-out;
+}
+
+.copy-btn:hover {
+     opacity: .5;
+}
+
+.copy-popup {
+     border-radius: 2px;
+     width: fit-content;
+     margin: auto;
+     margin-bottom: 5px;
+     margin-top: 3px;
+     letter-spacing: .80px;
+     display: none;
+     color: rgb(45, 238, 45);
+     font-weight: 500;
+     transition: .2s ease-in-out;
+}
+
+.pass-result {
+     font-weight: 500;
+     color: rgb(100, 97, 97);
+     letter-spacing: .60px;
+     font-size: 17px;
+}
+
+.pass-length-cont {
+     margin: 10px 10px 10px 0px;
+     display: flex;
+     width: 80px;
+     height: 27px;
+     justify-content: center;
+     align-items: center;
+     float: right;
+}
+
+.pass-length-cont input {
+     width: 100%;
+     height: 100%;
+     padding-left: 10px;
+     letter-spacing: .60px;
+     font-size: 17px;
+     font-weight: 500;
+}
+
+.pass-length-cont input::placeholder {
+     font-size: 14px;
+}
+
+.pass-options {
+     margin-top: 30px;
+     width: 100%;
+}
+
+.pass-options .options-items {
+     width: 100%;
+     font-size: 16px;
+     padding: 0 1px 0 8px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     cursor: pointer;
+     margin-bottom: 6px;
+     transition: .1s ease-in-out;
+}
+
+.pass-options .options-items:hover {
+     background: rgba(0, 0, 0, 0.1);
+}
+
+.pass-options .options-items button {
+     background: rgb(50, 233, 22);
+     color: white;
+     border: none;
+     cursor: pointer;
+     font-weight: 500;
+     letter-spacing: .60px;
+     padding: 8px 9px;
+     border-radius: 5px;
+     transition: .1s ease-in-out;
+}
+
+.pass-options .options-items button:hover {
+     opacity: .7;
+}
+
+.random-button {
+     margin-top: 14px;
+     width: 100%;
+     padding: 0 8px;
+}
+
+.random-button button {
+     background: rgb(224, 49, 143);
+     color: white;
+     width: 100%;
+     padding: 9px 0;
+     border: none;
+     border-radius: 2px;
+     font-weight: 500;
+     letter-spacing: .80px;
+     font-size: 15px;
+     cursor: pointer;
+     transition: .1s ease-in-out;
+}
+
+.random-button button:hover {
+     opacity: .6;
+}
+
+/* ======== Responsiveness ======== */
+@media(max-width: 400px) {
+     #main {
+          background-position: center top; 
+     }
+
+     .passoword-container {
+          width: 98%;
+     }
+
+     .pass-options .options-items {
+          margin-bottom: 12px;
+     }
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 150px 200px;
+        }
+ .bar {
+    margin-top: 50px;
+    cursor: pointer;
+ }
+        .bar .common {
+            height: 5px;
+            width: 40px;
+            background: aqua;
+            border-radius: 4px;
+        }
+
+        .bar .two {
+            margin: 3px 0;
+        }
+
+         
+
+        #header{
+            background: rgba(0,0,0,0.1);
+            padding: 15px 10px;
+            margin-top: 10px;
+            transition: .4s;
+         }
+        
+        #check:checked ~ #header {
+            /* background: linear-gradient(yellow, orange); */
+          visibility: hidden;
+          /* transition: .4s; */
+        }
+       
+        button {
+            margin-top: 30px;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="check">
+    
+     <div id="header">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+        </ul>
+    </div>
+ 
+
+  <label for="check">
+  <h1>heading</h1>
+
+   </label>
+
+</body>
+</html>

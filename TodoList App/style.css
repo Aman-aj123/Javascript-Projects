@@ -1,0 +1,114 @@
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body,
+html {
+     width: 100%;
+     height: 100%;
+}
+
+body {
+     background: linear-gradient(to right, #c2e0e0, rgb(218, 158, 190));
+}
+
+#main {
+     display: flex;
+     justify-content: center;
+     min-height: 100vh;
+     width: 100%;
+}
+
+#main .container {
+     width: 45%;
+     height: fit-content;
+     min-width: 290px;
+     margin-top: 50px;
+     margin-bottom: 14px;
+     background: rgb(216, 226, 226);
+     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+     padding: 15px 20px;
+     border-radius: 6px;
+}
+
+.container .searchBar {
+     width: 100%;
+     height: 43px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     background: #ffffff;
+     padding-left: 7px;
+     border-radius: 6px;
+     overflow: hidden;
+}
+
+.container .searchBar input {
+     width: 100%;
+     height: 100%;
+     padding: 10px 17px;
+     border: none;
+     outline: none;
+     font-size: 16px;
+     letter-spacing: 1px;
+     color: rgb(93, 90, 90);
+}
+
+.container .searchBar #addButton {
+     height: 100%;
+     background: #ff1491b7;
+     font-weight: 800;
+     border: none;
+     outline: none;
+     cursor: pointer;
+     padding: 0 15px;
+}
+
+.listArea {
+     margin-top: 16px;
+     width: 100%;
+}
+
+.listArea .listItems {
+     padding: 7px 15px;
+     padding-right: 4px;
+     border-radius: 6px;
+     width: 100%;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     background: #ffa07a;
+     margin-bottom: 5px;
+}
+
+.listArea .listItems:nth-last-child() {
+     margin-bottom: 0px !important;
+}
+
+.listArea .listItems #deleteButton {
+     background: rgb(227, 21, 66);
+     font-weight: 700;
+     letter-spacing: 1px;
+     cursor: pointer;
+     border: none;
+     outline: none;
+     cursor: pointer;
+     padding: 9px 13px;
+     border-radius: 7px;
+}
+
+.btnPrimary {
+     color: rgb(41, 40, 40);
+     transition: .2s;
+}
+
+.btnPrimary:hover {
+     opacity: .7;
+}
+
+.editButton{
+     background: rgb(41, 217, 41) !important;
+}

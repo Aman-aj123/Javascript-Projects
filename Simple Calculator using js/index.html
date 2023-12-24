@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator using || JAVASCRIPT</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
+        }
+
+        input {
+            padding: 3px 7px;
+            border: none;
+            color: #cc10ad;
+            font-size: 25px;
+            outline: none;
+            width: 100px;
+            font-weight: 900;
+            border-radius: 2px;
+
+        }
+
+        #result {
+            color: blue;
+            width: 230px;
+            font-size: 30px;
+            padding: 0 20px;
+        }
+
+        select {
+            margin: 0 13px;
+            font-size: 25px;
+            font-weight: 1000;
+            color: red;
+            padding: 2px 6px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+         }
+
+         #calculate {
+            padding: 11px 10px;
+            background: orange;
+            color: #fff;
+            font-size: 18px;
+            letter-spacing: 1px;
+            border:none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin: 5px 0;
+            font-weight: 500;
+            width: 150px;
+         }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+
+        <input type="text" id="boxFirst">
+
+
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+
+        <input type="text" id="boxSecond"> <br> <br>
+
+        <button id="calculate">Calcute</button> <br> <br>
+
+        <input type="text" id="result">
+
+    </div>
+    <script>
+
+        var button = document.querySelector("#calculate")
+
+
+
+        button.addEventListener("click", () => {
+
+            var ope1 = Number(document.querySelector("#boxFirst").value)
+
+            var ope2 = Number(document.querySelector("#boxSecond").value)
+
+            var mainSelect = document.querySelector("#operator").value;
+
+
+
+            if (mainSelect == '+') {
+                var result = ope1 + ope2;
+            }
+
+            if (mainSelect == '-') {
+                var result = ope1 - ope2;
+            }
+
+            if (mainSelect == '*') {
+                var result = ope1 * ope2;
+            }
+
+            if (mainSelect == '/') {
+                var result = ope1 / ope2;
+            }
+
+            document.getElementById("result").value = result
+
+        })
+
+
+
+
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>

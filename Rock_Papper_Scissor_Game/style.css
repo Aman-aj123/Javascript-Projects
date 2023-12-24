@@ -1,0 +1,118 @@
+* {
+     padding: 0;
+     margin: 0;
+     box-sizing: border-box;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.game-title{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.game-container {
+     margin-top: 50px;
+}
+
+
+.choices-container {
+     margin: auto;
+     margin-bottom: 30px;
+     margin-top: 40px;
+     display: flex;
+     justify-content: space-around;
+     align-items: center;
+     width: 410px;
+}
+
+.choices-container .choices-items {
+     width: 100px;
+     height: 100px;
+     overflow: hidden;
+     border-radius: 50%;
+     padding: 5px;
+}
+
+.choices-container .choices-items:hover {
+     border: 4px solid black;
+     cursor: pointer;
+}
+
+.choices-items img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+}
+
+.score-area {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     gap: 50px;
+}
+
+.score-area p {
+     font-weight: 500;
+     letter-spacing: .70px;
+     font-size: 18px;
+}
+
+.score-area #user-score,
+.score-area #computer-score {
+     margin-left: 10px;
+     font-size: 19px;
+     font-weight: 400;
+}
+
+.result-btn {
+     width: fit-content;
+     background: #daddad;
+     color: black;
+     margin: 20px auto 0 auto;
+     padding: 8px 13px;
+     font-weight: 500;
+     letter-spacing: .70px;
+     border-radius: 5px;
+     font-size: 15px;
+     transition: .2 ease-in-out;
+}
+
+.win-result {
+     background: rgb(27, 227, 27);
+     color: white;
+}
+
+.loose-result {
+     background: rgb(235, 35, 24);
+     color: white;
+}
+
+.tie-result {
+     background: rgb(27, 214, 227);
+     color: white;
+}
+
+
+/* Responsiveness  */
+@media(max-width: 430px) {
+     .choices-container {
+          width: 100%;
+     }
+}
+
+@media(max-width: 280px) {
+     .choices-container .choices-items {
+          width: 80px;
+          height: 80px;
+     }
+}
+
+@media(max-width: 370px) {
+     .score-area {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 7px;
+          padding-left: 20px;
+     }
+}
