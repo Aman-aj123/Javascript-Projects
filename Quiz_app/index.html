@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Quiz App</title>
+     <!-- Tailwind CSS CDN link  -->
+     <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+     <style>
+          * {
+               user-select: none;
+          }
+
+          .wrong-answer {
+               background: red;
+               transition: 0 !important;
+               cursor: no-drop;
+          }
+
+          .wrong-answer:hover {
+               background: red !important;
+          }
+
+          .result-area{
+          display: none;
+          }
+     </style>
+</head>
+
+<body class="bg-gray-100 h-screen flex items-center justify-center">
+
+     <div id="main" class="w-full">
+          <div class="bg-white quiz-area p-8 rounded shadow-md max-w-md mx-auto">
+               <h1 class="text-2xl font-bold mb-4 question-title">What is the national animal of India?</h1>
+               <div class="grid grid-cols-2 gap-4">
+                    <div
+                         class="question-options bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-600 transition duration-100">
+                         Dog</div>
+                    <div
+                         class="question-options bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-600 transition duration-100">
+                         Elephant</div>
+                    <div
+                         class="question-options bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-600 transition duration-100">
+                         Tiger</div>
+                    <div
+                         class="question-options bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-600 transition duration-100">
+                         Lion</div>
+               </div>
+               <button
+                    class="nextBtn mt-4 bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition duration-100">Next</button>
+          </div>
+
+
+          <div
+               class="result-area absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-white p-8 rounded shadow-md">
+               <h2 class="result-text text-2xl font-bold mb-4">You scored 3 out of 10</h2>
+               <button class="px-4 play-again py-2 text-white bg-blue-500 rounded hover:bg-blue-600 transition duration-100">Play
+                    again</button>
+          </div>
+     </div>
+
+     <!-- Javascript link  -->
+     <script src="script.js"></script>
+</body>
+
+</html>

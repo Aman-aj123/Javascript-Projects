@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Image editing | Javascript project.</title>
+     <style>
+          * {
+               padding: 0;
+               margin: 0;
+               box-sizing: border-box;
+               font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          }
+
+          html,
+          body {
+               width: 100%;
+               height: 100%;
+          }
+
+          #wrapper {
+               width: 100%;
+               height: 100%;
+          }
+
+          #Image-editing-area {
+               padding: 10px 14px;
+               width: 70vw;
+               display: flex;
+               justify-content: space-around;
+               flex-direction: row;
+               margin: auto;
+               margin-top: 50px;
+               border: 2px solid rgb(19, 18, 18);
+          }
+
+          #Image-editing-area .image-controls {
+               width: 50%;
+          }
+
+          #Image-editing-area .image-show {
+               width: 50%;
+          }
+
+          .choose-controls {
+               display: flex;
+               align-items: center;
+               gap: 15px;
+               flex-wrap: wrap;
+               height: fit-content;
+          }
+
+          .choose-controls .controls-button button {
+               padding: 8px 10px;
+               border-radius: 5px;
+               cursor: pointer;
+               font-size: 16px;
+               letter-spacing: .60px;
+               font-weight: 500;
+               border: none;
+               outline: none;
+               transition: .1s ease-in-out;
+          }
+
+          .controls-button button:hover {
+               opacity: .6;
+          }
+
+          .controls-button .active-btn {
+               background: rgb(10, 106, 209);
+               color: white;
+          }
+
+          .range {
+               margin: 18px 0;
+          }
+
+          #range-control {
+               width: 230px;
+          }
+
+          .action-options {
+               display: flex;
+               gap: 16px;
+               flex-wrap: wrap;
+          }
+
+          .action-options button {
+               padding: 7px 9px;
+               border-radius: 5px;
+               cursor: pointer;
+               font-size: 16px;
+               letter-spacing: .60px;
+               font-weight: 500;
+               border: none;
+               outline: none;
+               color: white;
+               transition: .1s ease-in-out;
+          }
+
+          .edit-img {
+               width: 100%;
+               height: 100%;
+               overflow: hidden;
+          }
+
+          .edit-img img {
+               object-fit: cover;
+               width: 100%;
+               height: 100%;
+          }
+
+          .action-options .save-btn {
+               background: rgb(18, 219, 18);
+          }
+
+          .action-options .dowload-btn {
+               background: rgb(208, 8, 48);
+          }
+
+          .action-options button:hover {
+               opacity: .6;
+          }
+     </style>
+</head>
+
+<body>
+
+     <div id="wrapper">
+          <div id="Image-editing-area">
+               <div class="image-controls">
+                    <div class="choose-controls">
+                         <div class="controls-button">
+                              <button>Blur</button>
+                         </div>
+                         <div class="controls-button">
+                              <button>Grayscale</button>
+                         </div>
+                         <div class="controls-button">
+                              <button>Contrast</button>
+                         </div>
+                         <div class="controls-button">
+                              <button>Brightness</button>
+                         </div>
+                         <div class="controls-button">
+                              <button>Invert</button>
+                         </div>
+                    </div>
+                    <div class="range">
+                         <input type="range" value="0" id="range-control">
+                    </div>
+                    <div class="action-options">
+                         <button class="save-btn">Save</button>
+                         <button class="dowload-btn">Dowload</button>
+                    </div>
+               </div>
+               <div class="image-show">
+                    <div class="edit-img">
+                         <img id="displayedImage"
+                              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgf2Kx10TM3qX7mOiWJMc2OuO3qXbF6VjfOg&usqp=CAU"
+                              alt="" srcset="">
+                    </div>
+                    <input type="file" id="select-image" onchange="loadImage()">
+
+               </div>
+          </div>
+     </div>
+
+     <!-- Javascript  -->
+     <script>
+          function editImage() {
+               // Intializing variables
+               const controlsBtn = document.querySelectorAll(".controls-button button");
+               const range = document.querySelector("#range-control");
+               const mainImage = document.querySelector("#displayedImage");
+
+               // Update filters on range change
+               range.addEventListener("input", () => {
+                    const activeBtn = document.querySelector('.controls-button .active-btn');
+                    if (activeBtn) {
+                         // Update filter based on active button
+                         if (activeBtn.textContent == "Blur") {
+                              mainImage.style.filter = `blur(${range.value}px)`;
+                         }
+                         else if (activeBtn.textContent == "Grayscale") {
+                              mainImage.style.filter = `grayscale(${range.value}%)`;
+                         }
+                         else if (activeBtn.textContent == "Contrast") {
+                              mainImage.style.filter = `contrast(${range.value}%)`;
+                         }
+                         else if (activeBtn.textContent == "Brightness") {
+                              mainImage.style.filter = `brightness(${range.value}%)`;
+                         }
+                         else if (activeBtn.textContent == "Invert") {
+                              mainImage.style.filter = `invert(${range.value}%)`;
+                         }
+                    }
+               });
+
+               // Toggling active-class on clicked button
+               controlsBtn.forEach((element) => {
+                    element.addEventListener("click", () => {
+                         controlsBtn.forEach((itm) => {
+                              itm.classList.remove('active-btn');
+                         })
+                         element.classList.add('active-btn');
+                         range.value = 0;
+                    });
+               });
+          }
+
+          function loadImage() {
+               const input = document.getElementById('select-image');
+               const mainImage = document.getElementById('displayedImage');
+
+               const file = input.files[0];
+               const reader = new FileReader();
+
+               reader.onload = function (e) {
+                    mainImage.src = e.target.result;
+               };
+
+               reader.readAsDataURL(file);
+          }
+
+          editImage();
+     </script>
+
+</body>
+
+</html>
